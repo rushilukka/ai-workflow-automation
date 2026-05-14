@@ -1,17 +1,7 @@
-you can use open-source orchestration / AI workflow tools that provide for different purposes:
+# Open src - Community Edition(MIT License)
 
-- workflow management
-- retries
-- visual flows
-- tool chaining
-- queues
-- state
-- observability
-- AI integrations
+Using an open-source solution gives you the perfect balance: 
+```
+you get the heavy-lifting infrastructure for free, but you retain absolute control over the data, the hosting, and the custom logic.
+```
 
-while still allowing TypeScript customization.
-
----
-Open source tools for AI workflow orchestration:- 
-
-![alt text](image.png)
