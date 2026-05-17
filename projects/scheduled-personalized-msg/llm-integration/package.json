@@ -1,0 +1,23 @@
+{
+  "name": "nvidia-llm-integration",
+  "version": "1.0.0",
+  "description": "Simple NVIDIA LLM API integration testing script using OpenAI SDK",
+  "type": "module",
+  "main": "test.js",
+  "scripts": {
+    "start": "node test.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "nvidia",
+    "llm",
+    "openai",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "openai": "^4.52.0"
+  }
+}
