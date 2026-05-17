@@ -1,0 +1,13 @@
+{
+  "name": "telegram-bot-sender",
+  "version": "1.0.0",
+  "description": "Send messages to Telegram bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.63.0",
+    "dotenv": "^16.0.0"
+  }
+}
