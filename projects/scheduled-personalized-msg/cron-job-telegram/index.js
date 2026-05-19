@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-const TelegramBot = require('node-telegram-bot-api');
 const { TEST_MESSAGE } = require('./CONSTANTS');
 
 const token = process.env.BOT_TOKEN;
@@ -16,14 +15,27 @@ if (!chatId) {
   process.exit(1);
 }
 
-const bot = new TelegramBot(token);
-
 async function sendMessage() {
-  await bot.sendMessage(chatId, TEST_MESSAGE);
+  const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: TEST_MESSAGE
+    })
+  });
+
+  const result = await response.json();
+
+  if (!response.ok || !result.ok) {
+    throw new Error(result.description || `Telegram API failed with ${response.status}`);
+  }
 }
 
 sendMessage().catch((error) => {
-  const details = error.response?.body || error.message || error;
+  const details = error.message || error;
   console.error('Failed to send Telegram message:', details);
   process.exit(1);
 });
