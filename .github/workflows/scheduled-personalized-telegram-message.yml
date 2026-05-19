@@ -1,0 +1,33 @@
+name: Send scheduled personalized Telegram message
+
+on:
+  schedule:
+    # Runs every day at 7:00 PM IST (13:30 UTC).
+    - cron: '30 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  send-telegram-message:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: projects/scheduled-personalized-msg/cron-job
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Send Telegram message
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: npm start

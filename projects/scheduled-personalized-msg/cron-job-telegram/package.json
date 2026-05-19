@@ -1,0 +1,13 @@
+{
+  "name": "scheduled-telegram-message-cron",
+  "version": "1.0.0",
+  "description": "Scheduled daily Telegram message sender",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "node-telegram-bot-api": "^0.63.0"
+  }
+}
