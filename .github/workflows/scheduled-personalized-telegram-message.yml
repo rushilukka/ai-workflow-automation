@@ -3,7 +3,7 @@ name: Send scheduled personalized Telegram message
 on:
   schedule:
     # Runs every day at 7:00 PM IST (13:30 UTC).
-    - cron: '30 16 * * *'
+    - cron: '34 16 * * *'
   workflow_dispatch:
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: projects/scheduled-personalized-msg/cron-job
+        working-directory: projects/scheduled-personalized-msg/cron-job-telegram
 
     steps:
       - name: Checkout repository
