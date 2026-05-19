@@ -3,7 +3,7 @@ name: Send scheduled personalized Telegram message
 on:
   schedule:
     # Runs every day at 7:00 PM IST (13:30 UTC).
-    - cron: '34 16 * * *'
+    - cron: '38 16 * * *'
   workflow_dispatch:
 
 jobs:
@@ -25,6 +25,21 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Validate Telegram secrets
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: |
+          if [ -z "$BOT_TOKEN" ]; then
+            echo "::error::Missing BOT_TOKEN repository secret"
+            exit 1
+          fi
+
+          if [ -z "$CHAT_ID" ]; then
+            echo "::error::Missing CHAT_ID repository secret"
+            exit 1
+          fi
 
       - name: Send Telegram message
         env:

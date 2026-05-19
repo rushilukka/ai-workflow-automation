@@ -7,11 +7,13 @@ const token = process.env.BOT_TOKEN;
 const chatId = process.env.CHAT_ID;
 
 if (!token) {
-  throw new Error('BOT_TOKEN is required');
+  console.error('BOT_TOKEN is required. Add it as a GitHub Actions repository secret.');
+  process.exit(1);
 }
 
 if (!chatId) {
-  throw new Error('CHAT_ID is required');
+  console.error('CHAT_ID is required. Add it as a GitHub Actions repository secret.');
+  process.exit(1);
 }
 
 const bot = new TelegramBot(token);
@@ -21,6 +23,7 @@ async function sendMessage() {
 }
 
 sendMessage().catch((error) => {
-  console.error('Failed to send Telegram message:', error);
+  const details = error.response?.body || error.message || error;
+  console.error('Failed to send Telegram message:', details);
   process.exit(1);
 });
