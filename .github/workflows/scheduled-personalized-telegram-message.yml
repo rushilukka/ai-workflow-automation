@@ -2,8 +2,8 @@ name: Send scheduled personalized Telegram message
 
 on:
   schedule:
-    # Runs every day at 2hr interval.
-    - cron: '0 */2 * * *'
+    # Runs every day at 2hr interval. Disable for now
+    # - cron: '0 */2 * * *'
   workflow_dispatch:
 
 jobs:
