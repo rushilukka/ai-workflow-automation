@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  username String   @id @db.VarChar(100)
+  fullName String   @map("full_name") @db.VarChar(255)
+  hobbies  Hobbies?
+
+  @@map("user")
+}
+
+model Hobbies {
+  username String   @id @db.VarChar(100)
+  hobbies  String[]
+  user     User     @relation(fields: [username], references: [username], onDelete: Cascade)
+
+  @@map("hobbies")
+}

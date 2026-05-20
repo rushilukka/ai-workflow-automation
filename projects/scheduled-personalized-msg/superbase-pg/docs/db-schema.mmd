@@ -1,0 +1,12 @@
+erDiagram
+  USER ||--o| HOBBIES : has
+
+  USER {
+    varchar username PK
+    varchar full_name
+  }
+
+  HOBBIES {
+    varchar username PK, FK
+    string_array hobbies
+  }
