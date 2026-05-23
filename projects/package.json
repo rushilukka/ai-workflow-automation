@@ -1,0 +1,17 @@
+{
+  "name": "ai-workflow-projects-manager",
+  "version": "1.0.0",
+  "description": "Manage all project dependencies recursively",
+  "scripts": {
+    "install:all": "node scripts/install-all.js",
+    "uninstall:all": "node scripts/uninstall-all.js",
+    "clean:all": "npm run uninstall:all && npm run install:all"
+  },
+  "keywords": [
+    "dependencies",
+    "node_modules",
+    "recursive"
+  ],
+  "author": "",
+  "license": "ISC"
+}
